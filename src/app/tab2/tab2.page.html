@@ -1,0 +1,48 @@
+<ion-content>
+  <div class="login-section">
+    <div class="heading">
+
+      <div class="h1 ion-text-center">
+        <h1 style="font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">&nbsp;&nbsp;&nbsp;Happy to
+          see you :)</h1>
+      </div>
+
+      <h3 style="font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">&nbsp;&nbsp;&nbsp;Login
+        Yourself!</h3>
+
+      <br>
+
+      <div style="margin-left: 60px;">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQApckC-nT-3YwbL0B7O0igGIJACP0AY1OFeg&usqp=CAU">
+      </div>
+
+      <div class="lgin-form ion-padding">
+        <form #loginForm="ngForm" (submit)="loginData(loginForm)">
+          <ion-list>
+
+
+            <ion-item>
+              <ion-label position="floating">Email</ion-label>
+              <ion-input placeholder="Enter your email" required #email="ngModel" ngModel name="email"></ion-input>
+              <span *ngIf="email.invalid && email.touched" style="color:red
+                ">Required field!</span>
+            </ion-item>
+
+            <ion-item>
+              <ion-label position="floating">Create Password</ion-label>
+              <ion-input placeholder="Enter your password" required #password="ngModel" ngModel name="pw"></ion-input>
+              <span *ngIf="password.invalid && password.touched" style="color:red
+               ">Required field!</span>
+            </ion-item>
+
+          </ion-list>
+          <br>
+          <ion-button expand="block" type="submit" [disabled]="loginForm.invalid">Login
+            yourself!</ion-button>
+
+        </form>
+      </div>
+    </div>
+  </div>
+
+</ion-content>

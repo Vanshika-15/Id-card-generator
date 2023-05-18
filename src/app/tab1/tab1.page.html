@@ -1,0 +1,61 @@
+<ion-content>
+  <div class="login-section">
+
+    <div class="heading">
+
+      <div class="h1 ion-text-center">
+        <h1 style="font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">&nbsp;&nbsp;&nbsp;Welcome!</h1>
+      </div>
+
+      <h3 style="font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; 
+      ;">&nbsp;&nbsp;&nbsp;Please Register Yourself first
+        to Continue!</h3>
+    </div>
+
+
+    <div style="margin-left: 75px;">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQApckC-nT-3YwbL0B7O0igGIJACP0AY1OFeg&usqp=CAU">
+    </div>
+
+    <div class="lgin-form ion-padding">
+      <form #reg="ngForm" (submit)="regData(reg.value)">
+      <div class="form-input">
+        <ion-item>
+          <ion-label position="floating">Name</ion-label>
+          <ion-input type="text" name="name" ngModel required #name="ngModel"></ion-input>
+          <span *ngIf ="name.invalid && name.touched" style="color:red
+          ">Required field!</span>
+        </ion-item>
+      </div>
+
+      <div class="form-input">
+        <ion-item>
+          <ion-label position="floating">Email</ion-label>
+          <ion-input type="email"  name="email" ngModel></ion-input>
+        </ion-item>
+      </div>
+
+
+      <div class="form-input">
+        <ion-item>
+          <ion-label position="floating">Conatct</ion-label>
+          <ion-input type="number" name="contact" ngModel></ion-input>
+        </ion-item>
+      </div>
+
+      <div class="form-input">
+        <ion-item>
+          <ion-label position="floating">Create Password</ion-label>
+          <ion-input type="text" name="password" ngModel></ion-input>
+        </ion-item>
+      </div>
+
+      <br>
+      <ion-button expand="block" type="submit" [disabled]="reg.invalid">Register yourself!</ion-button>
+    </form>
+    </div>
+
+
+
+  </div>
+</ion-content>

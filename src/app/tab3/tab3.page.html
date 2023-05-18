@@ -1,0 +1,172 @@
+<h1 style="font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;"> Please enter your details to fill up the ID Card!</h1>
+
+<ion-header>
+  <ion-toolbar>
+    <ion-title> Hello,{{text.email}} &nbsp;Welcome!</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<div style="margin-left: 75px;">
+  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQApckC-nT-3YwbL0B7O0igGIJACP0AY1OFeg&usqp=CAU">
+</div>
+
+<ion-content class="ion-padding">
+  <ion-button id="open-modal" expand="block">Start filling your details</ion-button>
+  <p style="font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; color: black; font-weight: bolder;"></p>
+  <ion-button id="open-modal2" expand="block">Edit Your Deatils!</ion-button>
+  <ion-modal trigger="open-modal" (willDismiss)="onWillDismiss($event)">
+    <ng-template>
+      <ion-header>
+        <ion-toolbar>
+          <ion-buttons slot="start">
+            <ion-button (click)="cancel()">Cancel</ion-button>
+          </ion-buttons>
+          <!-- <ion-icon name='pencil' id="open-modal2" style="margin-left: 210px; margin-top: 22px;"></ion-icon> -->
+          <ion-title>Enter Now!</ion-title>
+          <ion-buttons slot="end">
+            <ion-button (click)="confirm()" [strong]="true">Confirm</ion-button>
+          </ion-buttons>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content class="ion-padding">
+        <form #details="ngForm" (submit)="getData(details.value)" >
+        <ion-item>
+          <ion-label position="stacked">Enter your Name</ion-label>
+          <ion-input type="text" placeholder="Your name" required #name="ngModel" ngModel name="name"></ion-input>
+          <span *ngIf="name.invalid && name.touched" style="color: red;">Required Field!</span>
+
+          <ion-label position="stacked">Enter your Contact</ion-label>
+          <ion-input type="text" placeholder="Your valid contact" #contact="ngModel" ngModel name="contact" ></ion-input>
+          <span *ngIf="contact.invalid && contact.touched" style="color: red;">Required Field!</span>
+
+          <ion-label position="stacked">Enter your Address</ion-label>
+          <ion-input type="text" placeholder="Your Address" #address="ngModel" ngModel name="address"></ion-input>
+          <span *ngIf="address.invalid && address.touched" style="color: red;">Required Field!</span>
+
+          <ion-label position="stacked">Enter your DOB</ion-label>
+          <ion-input type="date" placeholder="Your dob" #dob="ngModel" ngModel name="dob"></ion-input>
+          <span *ngIf="dob.invalid && dob.touched" style="color: red;">Required Field!</span>
+
+          
+          <ion-label position="stacked">Enter your Gender</ion-label>
+          <ion-input type="text" placeholder="Your Gender"#gender="ngModel" ngModel name="gender" ></ion-input>
+          <span *ngIf="gender.invalid && gender.touched" style="color: red;">Required Field!</span>
+
+          <ion-label position="stacked">Add your Photo</ion-label>
+          <ion-input type="file"  ></ion-input>
+
+    </ion-item>
+     &nbsp;
+    <ion-button expand="block" type="Submit" [disabled]="details.invalid">Submit</ion-button>
+   
+    
+  </form>
+      </ion-content>
+    </ng-template>
+  </ion-modal>
+
+
+  <h1>List</h1>
+  <ul *ngFor="let demo of arrayData">
+    <li (click)="getValue(demo.name)">{{demo.name}}</li>
+  </ul>
+
+
+
+<ion-card>
+  <ion-card-header>
+    <ion-card-title ion-text-center>GURU NANAK DEV ENGINEERING &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; COLLEGE, LUDHIANA</ion-card-title>
+    <ion-card-subtitle ion-text-center>&nbsp;&nbsp;&nbsp;&nbsp;An Autonomous College u/s[2(f) & 112(B) of UGC &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Act 1956</ion-card-subtitle>
+    <ion-card-subtitle ion-text-center>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Gill Park,Gill Road,Ludhiana Ph:0161 2502700</ion-card-subtitle>
+  </ion-card-header>
+  <ion-card-content>
+    <ion-list *ngFor="let item2 of result">
+      <ion-item>
+        <ion-thumbnail slot="start">
+          <img alt= />
+        </ion-thumbnail>
+  
+       <ion-label style="color:#d1fff8; font-family:Helvetica; margin-left:3px;"> &nbsp;Name&nbsp;: &nbsp;{{item2.name}}</ion-label>
+      </ion-item>
+
+      <ion-item>
+       <ion-label style="color:#d1fff8; font-family:Helvetica; margin-left:70px;" >&nbsp;Contact&nbsp;: &nbsp;{{item2.contact}}</ion-label>
+      </ion-item>
+
+      <ion-item>
+        <ion-label text-wrap style="color:#d1fff8; font-family:Helvetica; margin-left:70px;">&nbsp;Address&nbsp;:&nbsp;{{item2.address}}</ion-label>
+      </ion-item>
+
+      <ion-item>
+        <ion-label style="color:#d1fff8; font-family:Helvetica; margin-left:70px;">&nbsp;DOB&nbsp;:&nbsp;{{item2.dob}}</ion-label>
+      </ion-item>
+
+      <ion-item lines="none">
+        <ion-label style="color:#d1fff8; font-family:Helvetica; margin-left:70px;">&nbsp;Gender&nbsp;: &nbsp;{{item2.gender}}</ion-label>
+      </ion-item>
+    
+    </ion-list>
+ 
+  </ion-card-content>
+</ion-card>
+
+<ion-modal trigger="open-modal2" (willDismiss)="onWillDismiss($event)">
+  <ng-template>
+    <ion-header>
+      <ion-toolbar>
+        <ion-buttons slot="start">
+          <ion-button (click)="cancel()">Cancel</ion-button>
+        </ion-buttons>
+        
+        <ion-title>Edit your Details!</ion-title>
+        <ion-buttons slot="end">
+          <ion-button (click)="confirm()" [strong]="true">Confirm</ion-button>
+        </ion-buttons>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content class="ion-padding">
+      <form #details="ngForm" >
+      <ion-item>
+        <ion-label position="stacked">Enter your Name</ion-label>
+        <ion-input type="text" placeholder="Your name" required #name="ngModel" ngModel name="name"></ion-input>
+        <span *ngIf="name.invalid && name.touched" style="color: red;">Required Field!</span>
+
+        <ion-label position="stacked">Enter your Contact</ion-label>
+        <ion-input type="text" placeholder="Your valid contact" #contact="ngModel" ngModel name="contact" ></ion-input>
+        <span *ngIf="contact.invalid && contact.touched" style="color: red;">Required Field!</span>
+
+        <ion-label position="stacked">Enter your Address</ion-label>
+        <ion-input type="text" placeholder="Your Address" #address="ngModel" ngModel name="address"></ion-input>
+        <span *ngIf="address.invalid && address.touched" style="color: red;">Required Field!</span>
+
+        <ion-label position="stacked">Enter your DOB</ion-label>
+        <ion-input type="date" placeholder="Your dob" #dob="ngModel" ngModel name="dob"></ion-input>
+        <span *ngIf="dob.invalid && dob.touched" style="color: red;">Required Field!</span>
+
+        
+        <ion-label position="stacked">Enter your Gender</ion-label>
+        <ion-input type="text" placeholder="Your Gender"#gender="ngModel" ngModel name="gender" ></ion-input>
+        <span *ngIf="gender.invalid && gender.touched" style="color: red;">Required Field!</span>
+
+        <ion-label position="stacked">Add your Photo</ion-label>
+        <ion-input type="file"  ></ion-input>
+
+  </ion-item>
+   &nbsp;
+  <ion-button expand="block" type="Submit" >Change</ion-button>
+ 
+  
+</form>
+    </ion-content>
+  </ng-template>
+</ion-modal>
+
+
+
+</ion-content>
+
+
+
+
+<!-- <app-explore-container></app-explore-container> -->
